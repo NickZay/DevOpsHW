@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  dataservice:
+    image: "nickzay/dataservice"
+    ports:
+      - "7777:7777"
+  loginservice:
+    image: "nickzay/loginservice"
+    ports:
+      - "8888:8888"
+  postgres:
+    image: "postgres"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
