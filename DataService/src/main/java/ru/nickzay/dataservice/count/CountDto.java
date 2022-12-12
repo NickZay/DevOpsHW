@@ -1,10 +1,8 @@
 package ru.nickzay.dataservice.count;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class CountDto {
     String name;
     Long count;

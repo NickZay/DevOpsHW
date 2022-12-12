@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk-alpine
+EXPOSE 8888
+ADD ../artifacts/LoginService.jar springbootapp.jar
+ENTRYPOINT java -jar /springbootapp.jar

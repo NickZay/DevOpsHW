@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk-alpine
+EXPOSE 7777
+ADD ../artifacts/DataService.jar springbootapp.jar
+ENTRYPOINT java -jar /springbootapp.jar

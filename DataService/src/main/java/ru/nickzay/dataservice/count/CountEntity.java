@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "counts")
-@Getter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +18,5 @@ public class CountEntity {
     private Long id;
 
     private String name;
-    private Long count = 0L;
+    private Long count;
 }
