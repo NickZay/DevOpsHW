@@ -20,6 +20,7 @@ docker build -t nickzay/loginservice -f ./dockerfiles/LoginServiceDockerfile .
 
 Просто запуски
 ```bash
+docker run --name dataservcice --rm -p 7777:7777 -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/postgres -e SPRING_DATASOURCE_USERNAME=postgres -e SPRING_DATASOURCE_PASSWORD=secret nickzay/dataservice
 docker run --name loginservcice -p 8888:8888 -e DATA_SERVICE_URL=http://localhost:7777/ nickzay/loginservice
 docker run --name postgres_container -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=postgres -d -p 5433:5432 postgres
 ```
