@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.7.5'
+    id "io.freefair.lombok" version "6.6"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+    api 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.5'
+    implementation 'org.postgresql:postgresql:42.3.8'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+}
+
+group = 'ru.nickzay'
+version = '0.0.1-SNAPSHOT'
+description = 'DataService'
