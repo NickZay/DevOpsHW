@@ -13,7 +13,7 @@ import static java.util.Objects.isNull;
 
 @Service
 public class LoginService {
-    @Value("${DATA_SERVICE_URL}")
+    @Value("${data.service.url}")
     private String dataServiceUrl;
 
     public LoginDto getGreetingFor(String name) throws JsonProcessingException {

@@ -3,3 +3,4 @@ server:
   error:
     include-message: always
     include-binding-errors: always
+data.service.url: ${DATA_SERVICE_URL:http://localhost:7777/}
