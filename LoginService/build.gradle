@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.7.5'
+    id "io.freefair.lombok" version "6.6"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+}
+
+group = 'ru.nickzay'
+version = '0.0.1-SNAPSHOT'
+description = 'LoginService'
