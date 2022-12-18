@@ -1,0 +1,47 @@
+---
+- hosts: all
+  tasks:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+    - name: install git
+      apt:
+        name: git
+        state: present
+    - name: clone a repo with code
+      git:
+        repo: https://github.com/NickZay/JavaServices
+        dest: /repos/JavaServices
+        force: yes
+        update: yes
+
+    - name: install jdk
+      apt:
+        name: openjdk-17-jdk
+        state: present
+    - name: install jre
+      apt:
+        name: openjdk-17-jre
+        state: present
+
+    - name: register ls
+      shell: ls -la /repos/JavaServices
+      register: ls
+    - name: show ls
+      debug: var=ls
+
+    - name: login build
+      shell: chmod +x gradlew; ./gradlew build
+      args:
+        chdir: /repos/JavaServices/LoginService
+      register: login_build
+    - name: show login build
+      debug: var=login_build
+
+    - name: data build
+      shell: chmod +x gradlew; ./gradlew build
+      args:
+        chdir: /repos/JavaServices/DataService
+      register: data_build
+    - name: show data build
+      debug: var=data_build

@@ -1,0 +1,33 @@
+---
+- hosts: all
+  tasks:
+    - name: apt install python3-pip
+      apt:
+        name: python3-pip
+        state: present
+    - name: install docker-py
+      pip:
+        name: docker
+    #    - name: Ensure docker deamon is running
+    #        systemd:
+    #          name: docker
+    #          state: started
+
+    - name: build nickzay/dataservice
+      docker_image:
+        name: nickzay/dataservice
+        build:
+          path: /repos/JavaServices/dockerfiles/
+          dockerfile: DataServiceDockerfile
+        state: present
+    - name: build nickzay/loginservice
+      docker_image:
+        name: nickzay/loginservice
+        build:
+          path: /repos/JavaServices/dockerfiles/
+          dockerfile: LoginServiceDockerfile
+        state: present
+
+    - name: start docker compose
+      docker_compose:
+        project_src: /repos/JavaServices/
