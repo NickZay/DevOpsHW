@@ -4,6 +4,8 @@ pipeline {
     stage("build") {
       steps {
         echo 'build'
+        sh 'pwd'
+        sh 'ls -la'
         withGradle {
           sh './gradlew build'
         }
