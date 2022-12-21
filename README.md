@@ -17,9 +17,9 @@ docker push nickzay/dataservice
 docker push nickzay/loginservice 
 ```
 
-3. запуск docker-compose.yml
+3. запуск docker-compose
 ```bash
-docker-compose up
+docker-compose -f docker-compose-local.yml up
 ```
 
 Запуски для локального тестирования
@@ -61,32 +61,10 @@ vim /etc/ansible/hosts
 ansible -m ping machine
 ```
 
-```ansible
-  - hosts: all
-    tasks:
-      - name: install git
-        apt:
-          name: git
-          state: present
-          update_cache: yes
-      - name: clone a repo with code
-        git:
-           repo: https://github.com/NickZay/JavaServices
-           dest: /repos/JavaServices
-           clone: yes
-           update: yes
+Плейбуки находятся в папке ansible
 
-      - name: register ls
-        shell: ls -la /repos/JavaServices
-        register: ls
-      - name: show ls
-        debug: var=ls
-
-      - name: build
-        shell: ./gradlew build
-        args:
-            chdir: /repos/JavaServices
-        register: build
-      - name: show build
-        debug: var=build
+## TASK 3
+запуск docker-compose.yml
+```bash
+docker-compose -f docker-compose-jenkins.yml up
 ```
