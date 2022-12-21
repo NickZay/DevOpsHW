@@ -12,5 +12,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:/var/jenkins_home
 
+#  ngrok:
+#    image: ngrok/ngrok
+#    depends_on:
+#      - jenkins
+#    environment:
+#      NGROK_AUTHTOKEN: 2JCa9YEAGAA4SxhEpnDFqOIHkOO_2PFgpicE6pVkvgQs7GqZD
+#    command: http jenkins:8080
+
+
 volumes:
   jenkins_home:

@@ -1,17 +1,14 @@
 pipeline {
   agent any
+  tools {
+    gradle 'Gradle 7.6'
+  }
   stages {
     stage("build") {
       steps {
         echo 'build'
-        sh 'pwd'
-        sh 'ls -la'
-        withGradle {
-          sh 'cd ./DataService; ./gradlew build'
-        }
-        withGradle {
-          sh 'cd ./LoginService; ./gradlew build'
-        }
+        sh 'cd ./DataService; ./gradlew build'
+        sh 'cd ./LoginService; ./gradlew build'
       }
     }
     stage("test") {
