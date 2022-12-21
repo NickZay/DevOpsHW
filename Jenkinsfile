@@ -7,7 +7,10 @@ pipeline {
         sh 'pwd'
         sh 'ls -la'
         withGradle {
-          sh './gradlew build'
+          sh 'cd ./DataService; ./gradlew build'
+        }
+        withGradle {
+          sh 'cd ./LoginService; ./gradlew build'
         }
       }
     }
