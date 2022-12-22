@@ -68,3 +68,7 @@ ansible -m ping machine
 ```bash
 docker-compose -f docker-compose-jenkins.yml up
 ```
+Jenkinsfile здесь же
+
+## TASK 4
+Все yaml файлы, отновящиеся к K8s, лежат в папке deploy
