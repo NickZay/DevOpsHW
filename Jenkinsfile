@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    gradle 'Gradle-7.6'
-  }
   stages {
     stage("build") {
       steps {
@@ -13,17 +10,20 @@ pipeline {
     }
     stage("test") {
       steps {
-        echo 'test'
+        sh 'cd ./DataService; ./gradlew clean test --info'
+        sh 'cd ./LoginService; ./gradlew clean test --info'
       }
     }
     stage("allure") {
       steps {
-        echo 'allure'
+        sh 'cd ./DataService; ./gradlew allureServe'
+        sh 'cd ./LoginService; ./gradlew allureServe'
       }
     }
     stage("sonarqube") {
       steps {
-        echo 'sonarqube'
+        sh 'cd ./DataService; ./gradlew sonarqube'
+        sh 'cd ./LoginService; ./gradlew sonarqube'
       }
     }
     stage("deploy") {
