@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dataservice
+  name: dataservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dataservice
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dataservice
+    spec:
+      containers:
+        - env:
+            - name: DB_HOST
+              value: postgres:5432
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: secret
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+          image: nickzay/dataservice
+          name: dataservice
+          ports:
+            - containerPort: 7777
+          resources: {}
+      restartPolicy: Always
+status: {}

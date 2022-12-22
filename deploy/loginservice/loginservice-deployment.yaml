@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: loginservice
+  name: loginservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loginservice
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: loginservice
+    spec:
+      containers:
+        - env:
+            - name: DATA_SERVICE_URL
+              value: http://dataservice:7777/
+          image: nickzay/loginservice
+          name: loginservice
+          ports:
+            - containerPort: 8888
+          resources: {}
+      restartPolicy: Always
+status: {}
